@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import WitdhHeightBasics from "./src/pages/FlexBox";
+import WitdhHeightBasics from "./src/containers/Flex";
 
 const App = () => {
   return <WitdhHeightBasics />;

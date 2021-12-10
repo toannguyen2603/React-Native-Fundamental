@@ -1,43 +1,8 @@
-import React, { useState } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import React from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import stylesFlexBox from "../../theme/FlexBox";
 
-const WitdhHeightBasics = () => {
-  const [widthType, setWidthType] = useState("auto");
-  const [heightType, setHeightType] = useState("auto");
-
-  return (
-    <PreviewLayot
-      widthType={widthType}
-      heightType={heightType}
-      widthValues={["auto", 300, "80%"]}
-      heightValues={["auto", 200, "60%"]}
-      setWidthType={setWidthType}
-      setHeightType={setHeightType}
-    >
-      <View
-        style={{
-          alignSelf: "flex-start",
-          backgroundColor: "aliceblue",
-          height: heightType,
-          width: widthType,
-          padding: 15,
-        }}
-      >
-        <View style={[styles.box, { backgroundColor: "powderblue" }]} />
-        <View style={[styles.box, { backgroundColor: "skyblue" }]} />
-        <View style={[styles.box, { backgroundColor: "steelblue" }]} />
-      </View>
-    </PreviewLayot>
-  );
-};
-
-const PreviewLayot = ({
+const PreviewLayout = ({
   children,
   widthType,
   heightType,
@@ -47,17 +12,21 @@ const PreviewLayot = ({
   setHeightType,
 }) => (
   <View style={{ flex: 1, padding: 50 }}>
-    <View style={styles.row}>
-      <Text style={styles.label}>Width</Text>
+    <View style={stylesFlexBox.row}>
+      <Text style={stylesFlexBox.label}>Width</Text>
       {widthValues.map((value) => (
         <TouchableOpacity
           key={value}
           onPress={() => setWidthType(value)}
-          style={[styles.button, widthType === value && styles.selected]}
+          style={[
+            stylesFlexBox.button,
+            widthType === value && stylesFlexBox.selected,
+          ]}
         >
           <Text
             style={
-              (styles.buttonLabel, widthType === value && styles.selectedLabel)
+              (stylesFlexBox.buttonLabel,
+              widthType === value && stylesFlexBox.selectedLabel)
             }
           >
             {value}
@@ -66,17 +35,21 @@ const PreviewLayot = ({
       ))}
     </View>
 
-    <View style={styles.row}>
-      <Text style={styles.label}>Height</Text>
+    <View style={stylesFlexBox.row}>
+      <Text style={stylesFlexBox.label}>Height</Text>
       {heightValues.map((value) => (
         <TouchableOpacity
           key={value}
           onPress={() => setHeightType(value)}
-          style={[styles.button, heightType === value && styles.selected]}
+          style={[
+            stylesFlexBox.button,
+            heightType === value && stylesFlexBox.selected,
+          ]}
         >
           <Text
             style={
-              (styles.buttonLabel, heightType === value && styles.selectedLabel)
+              (stylesFlexBox.buttonLabel,
+              heightType === value && stylesFlexBox.selectedLabel)
             }
           >
             {value}
@@ -89,40 +62,4 @@ const PreviewLayot = ({
   </View>
 );
 
-const styles = StyleSheet.create({
-  box: {
-    width: 50,
-    height: 50,
-  },
-  row: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  button: {
-    padding: 8,
-    borderRadius: 4,
-    backgroundColor: "oldlace",
-    alignSelf: "flex-start",
-    marginRight: 10,
-    marginBottom: 10,
-  },
-  selected: {
-    backgroundColor: "coral",
-    shadowOpacity: 0,
-    borderWidth: 0,
-  },
-  buttonLabel: {
-    fontSize: 12,
-    fontWeight: "500",
-    color: "coral",
-  },
-  selectedLabel: {
-    color: "white",
-  },
-  label: {
-    textAlign: "center",
-    marginBottom: 10,
-    fontSize: 24,
-  },
-});
-export default WitdhHeightBasics;
+export default PreviewLayout;
