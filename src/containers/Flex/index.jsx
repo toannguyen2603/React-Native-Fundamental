@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 
-import PreviewLayout from "../../pages/FlexBox";
+import PreviewLayout from "../../screens/FlexBox";
 import stylesFlexBox from "../../theme/FlexBox";
 
 const WitdhHeightBasics = () => {

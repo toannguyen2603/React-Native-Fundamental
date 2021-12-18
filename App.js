@@ -1,10 +1,10 @@
 import React from "react";
-import { View } from "react-native";
-import WitdhHeightBasics from "./src/containers/Flex";
-import ButtonBasics from "./src/pages/Button";
+import FlatListView from "./src/screens/Flatlist";
+
+// import ImageView from "./src/screens/ImageView";
 
 const App = () => {
-  return <ButtonBasics />;
+  return <FlatListView />;
 };
 
 export default App;
